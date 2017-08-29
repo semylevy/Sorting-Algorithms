@@ -5,13 +5,15 @@
 #include <vector>
 #include <unordered_map>
 #include <math.h>
-#include "array_generation.h"
+#include "extra_functions.h"
 
 using namespace std;
 
 void swap(int **array, int a, int b);
 int getMax(int **array, int n);
 void bubbleSort(int **array, int n);
+void brickSort(int **array, int n);
+void brickSortAlt(int **array, int n);
 void cocktailSort(int **array, int n);
 void insertionSort(int **array, int n);
 void bucketSort(int **array, int n);
@@ -43,6 +45,43 @@ void bubbleSort(int **array, int n) {
         for(int j = n; j > i; j--) {
             if(array[0][j-1] > array[0][j]) {
                 swap(array, j-1, j);
+            }
+        }
+    }
+}
+
+void brickSort(int **array, int n) {
+    bool sorted = false;
+    while(!sorted) {
+        sorted = true;
+        for (int i = 0; i < n; i+=2) {
+            if(array[0][i] > array[0][i+1]){
+                swap(array, i, i+1);
+                sorted = false;
+            }
+        }
+        for (int i = 1; i < n; i+=2) {
+            if(array[0][i] > array[0][i+1]){
+                swap(array, i, i+1);
+                sorted = false;
+            }
+        }
+    }
+}
+
+void brickSortAlt(int **array, int n) {
+    for(int i = 0; i < n; i++) {
+        if(i&1) {
+            for (int j = 0; j < n-2; j+=2) {
+                if(array[0][j] > array[0][j+1]){
+                    swap(array, j, j+1);
+                }
+            }
+        } else {
+            for (int j = 1; j < n-2; j+=2) {
+                if(array[0][j] > array[0][j+1]){
+                    swap(array, j, j+1);
+                }
             }
         }
     }
@@ -82,11 +121,9 @@ void insertionSort(int **array, int n) {
             j--;
         }
         array[0][j+1] = temp;
-        printArray(*array, n);
     }
 }
 
-//bucketSort para valores
 void bucketSort(int **array, int n) {
     
     int bucketNumber, max, min, divider, i, j, k;
@@ -113,6 +150,33 @@ void bucketSort(int **array, int n) {
             k++;
         }
     }
+}
+
+void countingSort(int **array, int n) {
+    int max = getMax(array, n);
+    int *indexQ = new int[max+1];
+    int *res = new int[n];
+    int i, count;
+    for(i = 0, count = 0; i <= max && count < n; i++) {
+        indexQ[array[0][i]]++;
+        count++;
+    }
+    for (i = 1; i <= max; i++) {
+        indexQ[i]+=indexQ[i-1];
+        cout << indexQ[i] << " ";
+    }
+    cout << endl;
+    for (i = n-1; i >= 0; i--) {
+        res[--indexQ[array[0][i]]] = array[0][i];
+    }
+    for(i = 0; i < n; i++) {
+        array[0][i] = res[i];
+    }
+    
+}
+
+void radixSort(int **array, int n) {
+    
 }
 
 #endif
