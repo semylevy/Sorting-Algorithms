@@ -6,16 +6,29 @@ using namespace std;
 
 int main() {
     int *arr1, n;
-    n = 10;
+    n = 1000;
+    arr1 = new int[n];
     
-    arr1 = newRandomArray(n);
+    //arr1 = newRandomArray(n);
     //printArray(arr1, n);
     
     //getRuntime(countingSort, &arr1, n);
     //arr1 = newRandomArray(n);
     //getRuntime(bucketSort, &arr1, n);
-    
-    radixSort(&arr1, n);
+    //generateArrayFile(arr1, n);
+    //printArray(arr1, n);
+    //readFromFile(&arr1, n);
+    //getRuntime(bucketSort, &arr1, n);
+    //readFromFile(&arr1, n);
+    //getRuntime(bubbleSort, &arr1, n);
+    readFromFile(&arr1, n);
+    getRuntime(countingSort, &arr1, n);
+    //readFromFile(&arr1, n);
+    //getRuntime(cocktailSort, &arr1, n);
+    //readFromFile(&arr1, n);
+    //getRuntime(insertionSort, &arr1, n);
+    //printArray(arr1, n);
+    //bubbleSort(&arr1, n);
     //printArray(arr1, n);
     
     return 1;

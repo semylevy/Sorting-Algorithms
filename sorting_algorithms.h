@@ -42,9 +42,9 @@ int getMax(int **array, int n) {
 
 void bubbleSort(int **array, int n) {
     for(int i = 0; i < n; i++) {
-        for(int j = n; j > i; j--) {
-            if(array[0][j-1] > array[0][j]) {
-                swap(array, j-1, j);
+        for(int j = 0; j < n-i-1; j++) {
+            if(array[0][j+1] < array[0][j]) {
+                swap(array, j+1, j);
             }
         }
     }
@@ -163,9 +163,7 @@ void countingSort(int **array, int n) {
     }
     for (i = 1; i <= max; i++) {
         indexQ[i]+=indexQ[i-1];
-        cout << indexQ[i] << " ";
     }
-    cout << endl;
     for (i = n-1; i >= 0; i--) {
         res[--indexQ[array[0][i]]] = array[0][i];
     }
