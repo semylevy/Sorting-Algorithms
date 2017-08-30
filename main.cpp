@@ -5,11 +5,18 @@
 using namespace std;
 
 int main() {
-    int *arr1, n;
-    n = 1000;
-    arr1 = new int[n];
+    //int *arr1, n;
+    //n = 10;
+    //arr1 = new int[n];
+    
+    testAllCases(quickSort);
+    //testAllCases(countingSort);
+    //testAllCases(insertionSort);
     
     //arr1 = newRandomArray(n);
+    //quickSort(&arr1, n);
+    //printArray(arr1, n);
+    //getRuntime(radixSort, &arr1, n);
     //printArray(arr1, n);
     
     //getRuntime(countingSort, &arr1, n);
@@ -21,8 +28,8 @@ int main() {
     //getRuntime(bucketSort, &arr1, n);
     //readFromFile(&arr1, n);
     //getRuntime(bubbleSort, &arr1, n);
-    readFromFile(&arr1, n);
-    getRuntime(countingSort, &arr1, n);
+    //readFromFile(&arr1, n);
+    //getRuntime(countingSort, &arr1, n);
     //readFromFile(&arr1, n);
     //getRuntime(cocktailSort, &arr1, n);
     //readFromFile(&arr1, n);
