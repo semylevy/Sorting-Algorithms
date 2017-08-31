@@ -22,6 +22,7 @@ void countingSort(int **array, int n);
 void modCountingSort(int **array, int n, int div);
 void mergeSort(int **array, int n);
 void mergeSort(int **array, int high, int low);
+void mergeArrays(int **array, int low, int mid, int high);
 void binaryTreeSort(int **array, int n);
 void radixSort(int **array, int n);
 void shellSort(int **array, int n);
@@ -105,7 +106,6 @@ void cocktailSort(int **array, int n) {
         }
         
         if(!swapCheck) {
-            cout << endl << i << endl;
             return;
         }
         
@@ -201,7 +201,7 @@ void modCountingSort(int **array, int n, int div) {
 }
 
 void mergeSort(int **array, int n) {
-    
+    mergeSort(array, 0, n-1);
 }
 
 void mergeSort(int **array, int low, int high) {
@@ -211,10 +211,41 @@ void mergeSort(int **array, int low, int high) {
     
     int mid = low + (high - low) / 2;       //Se genera un punto medio a partir de high y low
     
-    mergeSort(low, mid);        //llamada recursiva para la parte izquierda del arreglo
-    mergeSort(mid+1, high);     //llamada recursiva para la parte derecha del arreglo
+    mergeSort(array, low, mid);        //llamada recursiva para la parte izquierda del arreglo
+    mergeSort(array, mid+1, high);     //llamada recursiva para la parte derecha del arreglo
     
-    mergeArrays(low, mid, high);        //se combinan ambos arreglos de forma ordenada
+    mergeArrays(array, low, mid, high);        //se combinan ambos arreglos de forma ordenada
+}
+
+void mergeArrays(int **array, int low, int mid, int high) {      //Método para hacer merge de dos arreglos ordenados
+    int auxiliar[high-low+1];     //Genera arreglo auxiliar
+    int i = low;        //Mitad derecha index
+    int j = mid+1;      //Mitad izquierda index
+    int k = 0;
+    while(i <= mid && j <= high) {     //Desde el principio hasta el fin del arreglo
+        if (array[0][i] < array[0][j]) { //Verifica si el elemento izquierdo es mayor que el derecho
+            auxiliar[k] = array[0][i];     //Agrega elemento en auxiliar
+            i++;
+            k++;
+        } else {
+            auxiliar[k] = array[0][j];     //Agrega elemento
+            j++;        //Incremento del lado izquierdo
+            k++;
+        }
+    }
+    while(i <= mid) {
+        auxiliar[k] = array[0][i];
+        i++;
+        k++;
+    }
+    while(j <= high) {
+        auxiliar[k] = array[0][j];
+        j++;
+        k++;
+    }
+    for(i = low; i <= high; i++) {
+        array[0][i] = auxiliar[i-low];
+    }
 }
 
 void radixSort(int **array, int n) {

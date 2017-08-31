@@ -9,7 +9,7 @@ int main() {
     //n = 10;
     //arr1 = new int[n];
     
-    testAllCases(quickSort);
+    testAllCases(mergeSort);
     //testAllCases(countingSort);
     //testAllCases(insertionSort);
     

@@ -79,7 +79,6 @@ void testAllCases(void (*sortFunction)(int **, int)) {
         int *array = new int[i];
         readFromFile(&array, i);
         getRuntime(sortFunction, &array, i);
-        //delete[] array;
     }
 }
 

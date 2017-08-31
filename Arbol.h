@@ -1,9 +1,9 @@
 #ifndef ARBOL_H
 #define ARBOL_H
 
-#import "Nodo.h"
-#import <iostream>
-#import <string>
+#include "Nodo.h"
+#include <iostream>
+#include <string>
 
 using namespace std;
 
