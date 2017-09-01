@@ -5,16 +5,19 @@
 using namespace std;
 
 int main() {
+    
+    testAllCases(countingSort);
+    
     //int *arr1, n;
-    //n = 10;
+    //n = 20000;
     //arr1 = new int[n];
     
-    testAllCases(mergeSort);
+    //testAllCases(countingSort);
     //testAllCases(countingSort);
     //testAllCases(insertionSort);
     
     //arr1 = newRandomArray(n);
-    //quickSort(&arr1, n);
+    //countingSort(&arr1, n);
     //printArray(arr1, n);
     //getRuntime(radixSort, &arr1, n);
     //printArray(arr1, n);

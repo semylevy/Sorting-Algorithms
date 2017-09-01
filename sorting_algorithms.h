@@ -5,6 +5,7 @@
 #include <vector>
 #include <unordered_map>
 #include <math.h>
+#include <algorithm>
 #include "extra_functions.h"
 #include "Arbol.h"
 
@@ -184,6 +185,9 @@ void modCountingSort(int **array, int n, int div) {
     int *indexQ = new int[max+1];
     int *res = new int[n];
     int i, count;
+    for(int i = 0; i < max+1; i++) {
+        indexQ[i] = 0;
+    }
     for(i = 0, count = 0; i <= max && count < n; i++) {
         indexQ[(array[0][i]/div)%10]++;
         count++;
